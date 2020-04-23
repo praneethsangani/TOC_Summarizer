@@ -20,7 +20,7 @@ class InputForm(Form):
 def main():
     form = InputForm(request.form)
     if request.method == 'GET':
-        return render_template('summary_app_index.html', form=form)
+        return render_template('TOC_Summarizer_Index.html', form=form)
     if request.method == 'POST' and form.validate():
         ratio = form.ratio.data
         text = form.text.data
@@ -29,9 +29,9 @@ def main():
         prediction = predict(text, ratio)
         print('prediction done')
         print(prediction)
-        return render_template('summary_app_output.html', form=form, prediction=prediction, text=text)
+        return render_template('TOC_Summarizer_Output.html', form=form, prediction=prediction, text=text)
     else:
-        return render_template('summary_app_index.html', form=form)
+        return render_template('TOC_Summarizer_Index.html', form=form)
 
 
 def predict(text, ratio):
